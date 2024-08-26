@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Update Candidate</title>
+    <style>
+           body {
+            background-image:url('/images/bg.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: black;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 0 auto;
+            width: 60%;
+            max-width: 600px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            background-color: rgba(255, 255, 255, 0.8); /* Change to rgba to add transparency */
+            color: black;
+            padding: 8px;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+            transition: background-color 0.3s ease-in-out; /* Add transition for hover effect */
+            border: none; /* Remove border */
+            outline: none; /* Remove outline */
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+        }
+
+        input[type="text"]:hover,
+        input[type="file"]:hover,
+        select:hover {
+            background-color: rgba(255, 255, 255, 0.9); /* Lighten background on hover */
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:hover:active {
+            background-color: #004080;
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert("Candidate details updated successfully!");
+            window.location.href = "/candidates"; // Redirect to candidates list after OK is clicked
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Update Candidate</h1>
+    <form action="/updatecandidate" method="POST" enctype="multipart/form-data" onsubmit="showAlert()">
+        <input type="hidden" name="candidate_id" value="<%= candidate_id %>">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="full_name" placeholder="New Full Name"><br>
+        <label for="partyName">Party Name:</label>
+        <input type="text" id="partyName" name="party_name" placeholder="New Party Name"><br>
+        <label for="partyLogo">Party Logo:</label>
+        <input type="file" id="partyLogo" name="party_logo_path" accept="image/*"><br>
+        <button type="submit">Update Candidate</button>
+    </form>
+</body>
+
+</html>
